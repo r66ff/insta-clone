@@ -1,0 +1,33 @@
+{
+  "name": "insta-clone",
+  "version": "1.0.0",
+  "description": "Node and Express based image sharing app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/r66ff/insta-clone.git"
+  },
+  "author": "Antonina Serdyukova",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/r66ff/insta-clone/issues"
+  },
+  "homepage": "https://github.com/r66ff/insta-clone#readme",
+  "dependencies": {
+    "bcrypt": "^1.0.3",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "multer": "^1.3.0",
+    "mysql2": "^1.5.1",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "pg": "^7.4.0",
+    "pug": "^2.0.0-rc.4",
+    "sequelize": "^4.28.0",
+    "sequelize-cli": "^3.2.0",
+    "sharp": "^0.18.4"
+  }
+}
