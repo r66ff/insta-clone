@@ -1,0 +1,11 @@
+create database insta_clone;
+
+sequelize model:create --name users --attributes "email:string, password:string, firstName:string, lastName:string, avatar:string, following:array:integer, followers:array:integer"
+
+sequelize model:create --name posts --attributes "imgLink:string, description:string, tags:array:integer"
+
+sequelize model:create --name tags --attributes "body:string"
+
+sequelize model:create --name comments --attributes "body:string, postId:integer, userId:integer"
+
+sequelize db:migrate
