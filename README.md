@@ -1,3 +1,1 @@
-# insta-clone
-
-## Node.js Express.js based image sharing app
+# Node.js Express.js based image sharing app
