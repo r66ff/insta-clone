@@ -1,0 +1,23 @@
+include ../includes/header-user-auth.pug
+
+div(class="container")
+  div
+     h1= title
+     
+     form(action="/user/signup" method="post")
+       div
+         label= 'First Name:'
+         input(type='text' name='firstName')
+       div
+         label= 'Last Name:'
+         input(type='text' name='lastName')
+       div
+         label= 'User Email:'
+         input(type='text' name='email')
+       div
+         label= 'Password:'
+         input(type='password' name='password')
+       div
+         button(type='submit') Submit
+   
+include ../includes/footer.pug
