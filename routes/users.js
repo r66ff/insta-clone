@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var isLoggedIn = require('../helpers/helpers').isLoggedIn;
 module.exports = function(passport) {
   // GET /user/signup
   router.get('/login', function(req, res){
@@ -32,17 +33,8 @@ module.exports = function(passport) {
  router.post('/login', passport.authenticate('local-login', {
     successRedirect: 'profile',
     failureRedirect: 'login'
- }),
- function(req, res){
+ }), function(req, res){
    res.json({user: req.user})
  });
  return router;
 };
-
-// ensure user is logged in
-function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated()){
-      return next();
-    }
-    res.redirect('/user/login');
-}

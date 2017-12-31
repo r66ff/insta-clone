@@ -1,0 +1,14 @@
+include includes/header.pug
+
+div(class="container")
+  div
+    h1= title
+
+  div(class="posts row")
+    each post in posts
+      div(class="col-sm-4 post")
+        img(src=post.imgLink class="img-responsive")
+        p= post.description
+
+
+include includes/footer.pug
