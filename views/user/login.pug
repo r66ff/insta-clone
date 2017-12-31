@@ -3,19 +3,19 @@ include ../includes/header-user-auth.pug
 div(class="container")
   div
      h1= title
-     
-     form(action="/user/login" method="post" enctype="application/json")
+
+     form(action="/user/login" method="post")
        div
          label= 'User Email:'
-         input(type='text' name='userEmail')
+         input(type='text' name='email')
        div
          label= 'Password:'
-         input(type='password' name='userPassword')
+         input(type='password' name='password')
        div
          button(type='submit') Submit
-     
+
      div
        p='Or '
          a(href="/user/signup") create new account
-   
+
 include ../includes/footer.pug

@@ -1,9 +1,13 @@
 module.exports = function(passport, users) {
   var LocalStrategy = require('passport-local').Strategy;
-  var UserModel = users;
   var bcrypt = require('bcrypt');
   passport.serializeUser(function(user, done) {
     done(null, user.id);
+  });
+  passport.deserializeUser(function(id, done) {
+    users.findById(id).then( function (user) {
+      done(null, user);
+    });
   });
 
   passport.use('local-signup', new LocalStrategy({
@@ -19,12 +23,10 @@ module.exports = function(passport, users) {
 
   function processSignupCallback(req, email, password, done) {
    // first search to see if a user exists in our system with that email
-   console.log(req.body);
-   UserModel.findOne({
+   users.findOne({
      where: {
        'email' : email
-     },
-     attributes: ['id']
+     }
    })
    .then(function(user) {
      if (user) {
@@ -36,7 +38,7 @@ module.exports = function(passport, users) {
        var userToCreate = req.body;
        bcrypt.hash(userToCreate.password, 10, function(err, hash){
          userToCreate.password = hash;
-         UserModel.create(userToCreate).then(function(createdRecord){
+         users.create(userToCreate).then(function(createdRecord){
            createdRecord.password = undefined;
            return done(null, createdRecord);
          });
@@ -47,7 +49,7 @@ module.exports = function(passport, users) {
 
   function processLoginCallback(email, password, done) {
      // first let's find a user in our system with that email
-     UserModel.findOne({
+     users.findOne({
        where: {
        'email' : email
        }
